@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign in with Google</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            body {
+                font-family: 'Arial', sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #f7f8fa;
+            }
+    
+            .container {
+                text-align: center;
+                background: white;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+    
+            h1 {
+                margin-bottom: 20px;
+                color: #333;
+            }
+    
+            .google-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #4285f4;
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+                padding: 12px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+                border: none;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s ease;
+            }
+    
+            .google-btn img {
+                width: 20px;
+                margin-right: 10px;
+            }
+    
+            .google-btn:hover {
+                background-color: #357ae8;
+            }
+    
+            p {
+                margin-top: 20px;
+                color: #666;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <h1>Sign in to Your Account</h1>
+            <a
+                href="{% url 'social:begin' 'google-oauth2' %}?next={% url 'home' %}">
+                <button class="google-btn">
+                    <img
+                        src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png"
+                        alt="Google Logo">
+                    Sign in with Google
+                </button>
+            </a>
+            <p>or use your email to register</p>
+        </div>
+
+    </body>
+</html>

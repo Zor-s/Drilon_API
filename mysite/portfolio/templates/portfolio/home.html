@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="{% static 'portfolio/global.css' %}" />
+    <style>
+    nav {
+      font-size: 16px;
+      font-family: roboto;
+    }
+    p{
+      font-size: 13px;
+      font-family: roboto;
+    }
+    h1{
+      font-size: 64px;
+      font-weight: bold;
+      font-family: roboto;
+    }
+    h2{
+      font-size: 18px;
+      font-weight: 600;
+      font-family: roboto;
+    }
+    
+    .btn-outline-custom1 {
+      color: var(--select-color);
+      border-color: var(--select-color);
+      background-color: transparent;
+    }
+
+    .btn-outline-custom1:hover {
+      background-color: var(--select-color);
+      color: white;
+    }
+    .div1{
+
+      background-color: var(--shade-color);
+    }
+  </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Logoipsum</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-between"
+          id="navbarNav"
+          style="margin-top: 14px; margin-bottom: 14px">
+          <div></div>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Portfolio</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">About Me</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Testimonials</a>
+            </li>
+          </ul>
+          <div>
+            <button type="button" class="btn btn-outline-custom1">
+              Contact Me
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="d-flex justify-content-evenly div1">
+      <div style="margin: 50px;">
+        <h2>Software Developer</h2>
+        <h1>Hello! I'm</h1>
+        <h1 style="color: var(--primary-color);">Zoren Drilon</h1>
+        <p>I’m a BSIT student currently studying at Davao del Norte State </p>
+        <p> College. I may not offer great features in my portfolio since I'm
+          still </p>
+        <p> studying but feel free to take a look!</p>
+      </div>
+
+      <div style="margin: 50px;">
+        <img width="460px" height="412px" src="../../static/portfolio/pic1.png"
+          alt />
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-evenly flex-column">
+      <div style="margin-inline: 50px;">
+        <h2>My Skills</h2>
+        <h1 style="color: var(--primary-color);">My Expertise</h1>
+      </div>
+
+      <div style="margin-inline: 50px;" class="d-flex justify-content-center">
+        <img width="1240px" height="396px" src="../../static/portfolio/pic2.png"
+          alt />
+      </div>
+    </div>
+
+    <div style="background-color: var(--shade-color);"
+      class="d-flex justify-content-evenly flex-column">
+      <div style="margin-inline: 50px;"
+        class="d-flex flex-column align-items-end">
+        <h2>Recent Projects</h2>
+        <h1 style="color: var(--primary-color);">My Projects</h1>
+      </div>
+
+      <div style="margin-inline: 50px;" class="d-flex justify-content-center">
+        <img width="1240px" height="591px" src="../../static/portfolio/pic3.png"
+          alt />
+      </div>
+    </div>
+
+    <div class="d-flex flex-column align-items-center">
+      <h2>Get In Touch</h2>
+      <h1>Contact me</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint,
+        cumque!</p>
+        <img width="1240px" height="1032px" src="../../static/portfolio/pic4.png"
+        alt />
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+  </body>
+
+</html>
