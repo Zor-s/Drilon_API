@@ -5,3 +5,6 @@ def login(request):
 
 def home(request):
     return render(request, 'portfolio/home.html')
+
+def signup(request):
+    return render(request, 'portfolio/signup.html')
