@@ -84,7 +84,8 @@
       <h1>Sign in to Your Account</h1>
       <div class="login-form">
         <h2 class="text-center">Login</h2>
-        <form>
+        <form method="POST" action="{% url 'loginform' %}">
+          {% csrf_token %}
           <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <div class="input-group">
@@ -94,6 +95,7 @@
                 class="form-control"
                 id="username"
                 placeholder="Enter your username"
+                name="username"
                 required
               />
             </div>
@@ -107,10 +109,18 @@
                 class="form-control"
                 id="password"
                 placeholder="Enter your password"
+                name="password"
                 required
               />
             </div>
           </div>
+          {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+          {% endif %}
           <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
         <p class="text-center mt-3">
