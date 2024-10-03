@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect  # Import render function
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login
+from .models import LoginAttempt
 
 def login(request):
     return render(request, 'portfolio/login.html')  # Render the home.html template
@@ -42,15 +43,37 @@ def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        
+        try:
+            user = User.objects.get(username=username)
+            login_attempt, created = LoginAttempt.objects.get_or_create(user=user)
+            
+            if login_attempt.is_locked:
+                messages.error(request, "Account is locked due to multiple failed login attempts.")
+                return redirect('loginform')
+
+        except User.DoesNotExist:
+            messages.error(request, "Invalid username or password.")
+            return redirect('loginform')
 
         # Authenticate the user
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            # Log the user in and redirect to the home page (or another page)
+            # Reset failed attempts on successful login
+            login_attempt.failed_attempts = 0
+            login_attempt.is_locked = False
+            login_attempt.save()
+
+            # Log the user in
             auth_login(request, user)
             messages.success(request, "You have successfully logged in!")
-            return redirect('home')  # Redirect to the home page or a dashboard
+            return redirect('home')
         else:
+            # Increase failed attempts and lock if necessary
+            login_attempt.failed_attempts += 1
+            if login_attempt.failed_attempts >= 3:
+                login_attempt.is_locked = True
+            login_attempt.save()
             messages.error(request, "Invalid username or password. Please try again.")
             return redirect('loginform')
 
